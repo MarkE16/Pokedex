@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+// This is the pokedex repository
+
 function App() {
   return (
     <div className="App">
