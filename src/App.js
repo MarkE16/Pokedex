@@ -8,7 +8,7 @@ import PokemonItem from './routes/PokemonItem';
 
 const App = () => {
   const [pokemonName, setPokemonName] = useState("");
-  const [selectedPokemon, setSelectedPokemon] = useState();
+  const [selectedPokemon, setSelectedPokemon] = useState({});
 
   const [search, setSearch] = useState("");
   
@@ -17,28 +17,22 @@ const App = () => {
     return Math.floor(Math.random() * 1200);
   }
 
-  const fetchPokemon = useCallback( async () => {
-    let item;
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomNum()}`)
-    const { data } = await response.json();
-    return data;
-    // .then(res => {
-    //   console.log(res);
-    //   return res.json();
-    // })
-    // .then(data => {
-    //   console.log(data);
-    //   return data;
-    // })
-
-  }, [])
+  // This function is always returning 'undefined' for some reason.
+  const fetchPokemon = async () => {
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${randomNum()}`)
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    })
+  }
 
   useEffect(() => {
     // randomNum();
-    const pokemon1 = fetchPokemon();
-    console.log(pokemon1);
-    setSelectedPokemon(pokemon1);
-  }, [])
+    const pokemon1 = fetchPokemon()
+    .then(result => {
+      setSelectedPokemon(result);
+    })
+    }, [])
 
   const handleClick = () => {
     randomNum();
@@ -76,9 +70,7 @@ const App = () => {
     })
   }
 
-  let ok;
   document.title = "Pokédex";
-  //console.log(selectedPokemon);
   return (
     <div className='App'>
       <header className='App-header'>
@@ -91,9 +83,7 @@ const App = () => {
       <Button variant="primary" className='App-button' onClick={() => handleClick()}>Click me</Button>
       <p>Selected Pokemon Name: {pokemonName}</p>
       <div className='App-items'>
-        { /* This is currently broken. */ }
-        {/* {selectedPokemon && <PokemonItem pokemon={selectedPokemon}/>} */}
-        {/* <PokemonItem pokemon={fetchPokemon()}/> */}
+        <PokemonItem pokemon={selectedPokemon}/>
         
       </div>
     </div>
