@@ -23,11 +23,8 @@
   border-radius: 25%;
   background-color: rgb(234, 234, 234);
   border-width: 5px;
-  margin: 60px;
+  margin: 50px;
   padding: 20px;
-  display: flex;
-  flex-direction: row;
-
   outline-color: rgb(0, 0, 0);
   border-color: rgb(0, 0, 0);
 }
@@ -38,7 +35,18 @@
   transition: background-color 0.3s;
 }
 
+.pokemon-item-title {
+  margin-right: 10px;
+}
+
+.pokemon-item.img {
+  
+}
+
 .App-items {
+  min-height: 100px;
+  width: auto;
+  margin: 40px;
   display: flex;
   flex-direction: row;
 }
@@ -101,9 +109,14 @@
   color: #fff;
   border: none;
   padding: 10px;
+  margin: 10px;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin-top: 10px;
+}
+
+.App-button:hover {
+  background-color: #3d62ab;
 }
