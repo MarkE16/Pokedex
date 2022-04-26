@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .container {
@@ -23,7 +24,7 @@
   border-radius: 25%;
   background-color: rgb(234, 234, 234);
   border-width: 5px;
-  margin: 50px;
+  margin: 60px;
   padding: 20px;
   outline-color: rgb(0, 0, 0);
   border-color: rgb(0, 0, 0);
@@ -39,16 +40,18 @@
   margin-right: 10px;
 }
 
-.pokemon-item.img {
-  
+.pokemon-img {
+  transform: scale(1.5);
 }
 
 .App-items {
   min-height: 100px;
-  width: auto;
+  width: 100%;
   margin: 40px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  
 }
 
 .App-header {
@@ -67,6 +70,7 @@
 .App-title {
   font-size: xx-large;
   text-shadow: 2px 1px rgb(0, 0, 0);
+
 }
 
 .App-title:hover {
@@ -119,4 +123,9 @@
 
 .App-button:hover {
   background-color: #3d62ab;
+}
+
+.App-button:disabled {
+  background-color: #7494d6;
+  cursor: default;
 }

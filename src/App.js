@@ -8,11 +8,12 @@ import PokemonItem from './routes/PokemonItem';
 
 const App = () => {
   const [pokemonName, setPokemonName] = useState("");
-  const [selectedPokemon, setSelectedPokemon] = useState();
   const [listOfPokemon, setListofPokemon] = useState([]);
 
-  const [amount, setAmount] = useState(0);
-  
+  const [amount, setAmount] = useState(5);
+  const [isLoading, setIsLoading] = useState(false);
+
+
   // Math.floor is basically rounding, kind of. Math.random returns 0 or 1, so multiply it by whatever number so range it from 0, [ that number ].
   const randomNum = () => {
     return Math.floor(Math.random() * 1200);
@@ -21,33 +22,33 @@ const App = () => {
   const fetchPokemon = async (limit=100) => {
     let totalPokemon = [];
 
-    if (limit > 100 || limit < 0) {
-      return alert("You cannot enter a number less an 0 or greater than 100.")
-    }
-    
-    return fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`)
-    .then(response => response.json())
-    .then(data => {
-      data.results.forEach(item => {
-        totalPokemon.push(item);
+    if (!isLoading) {
+      if (limit > 100 || limit <= 0) {
+        return alert("You cannot enter a number less an 0 or greater than 100.")
+      }
+      
+      setIsLoading(true);
+      return await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}offset=0`)
+      .then(response => response.json())
+      .then(data => {
+        data.results.forEach(item => {
+          totalPokemon.push(item);
+        })
+        setListofPokemon(totalPokemon);
+        //setSelectedPokemon(data);
+        setIsLoading(false);
       })
-      setListofPokemon(totalPokemon);
-      return data;
-    })
-    .catch(e => {
-      console.error(e);
-      console.log("ERROR => " + e.message);
-    })
+      .catch(e => {
+        console.error(e);
+        console.log("ERROR => " + e.message);
+      })
+    }
   }
+  const [selectedPokemon, setSelectedPokemon] = useState();
 
   useEffect(() => {
-    // ]randomNum();
-    // const pokemon1 = fetchPokemon()
-    // .then(result => {
-    //   setSelectedPokemon(result);
-    // })
-    fetchPokemon()
-    }, [])
+    fetchPokemon(amount)
+  }, [])
 
   const handleClick = () => {
     randomNum();
@@ -68,7 +69,6 @@ const App = () => {
     
   }
 
-  
 
   const handleSearch = query => {
     let pokemons = [];
@@ -92,11 +92,11 @@ const App = () => {
       </header>
       <h2>Enter how many pokémon you want to render.</h2>
       <input style={{ borderRadius: 5, width: 70, textAlign: "center" }} type="number" value={amount} onChange={txt => setAmount(txt.target.value)} placeholder="Amount" maxLength="100"/>
-      <Button variant='primary' className='App-button' onClick={() => fetchPokemon(amount)}>Render</Button>
+      <Button variant='primary' className='App-button' disabled={isLoading} onClick={() => fetchPokemon(amount)}>{!isLoading ? "Render" : "Rendering..."}</Button>
       <div className='App-items'>
         {
           listOfPokemon.map(poke => {
-            return <PokemonItem />
+            return <PokemonItem pokemon={poke}/>
           })
         }
       </div>
