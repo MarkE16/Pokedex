@@ -7,4 +7,7 @@ It's a project that fetches data from the [PokeAPI](https://pokeapi.co/) and dis
 
 ## How it looks
 Here is a current preview of the project (There are currently bugs, but it won't look like this in the final version):  
-![preview](D:\preview.mp4)
+
+
+https://user-images.githubusercontent.com/76978800/166157276-95166bd0-3108-4f2f-b737-832ce82f9cc9.mp4
+
