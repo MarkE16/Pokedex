@@ -3,7 +3,6 @@ import './App.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import PokemonItem from './routes/PokemonItem';
-import Modal from './routes/Modal';
 
 // This is the pokedex repository
 
@@ -28,6 +27,7 @@ const App = () => {
     if (!isLoading) {
       setIsLoading(true);
       for (var i = 0; i <= limit; i++) {
+        await timer(1000);
         const id = randomNum();
         await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         .then(res => res.json())
@@ -38,7 +38,6 @@ const App = () => {
           console.error(e);
           console.log("ERROR => " + e.message);
         })
-        await timer(500);
       }
       setListofPokemon(totalPokemon);
       setIsLoading(false);

@@ -3,6 +3,8 @@
 
 html {
   overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
 }
 
 /* ClassName CSS */
@@ -142,19 +144,12 @@ html {
 .darkBG {
   background-color: rgba(0, 0, 0, 0.2);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
-}
-
-.centered {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .modal {
@@ -162,9 +157,13 @@ html {
   height: 700px;
   background: white;
   color: white;
-  z-index: 10;
+  z-index: 1;
   border-radius: 16px;
   box-shadow: 0 100px 20px 0 rgba(0, 0, 0, 0.04);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modalHeader {
@@ -185,7 +184,12 @@ html {
 }
 
 .modalImg {
+  /* width: 100%; */
   margin: 100px;
+
+}
+
+.modalImg > img {
   transform: scale(3);
 }
 
@@ -198,6 +202,7 @@ html {
 
 .modalItems {
   display: flex;
+  flex-direction: column;
   align-content: space-around;
 }
 
