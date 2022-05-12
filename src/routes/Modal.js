@@ -22,15 +22,27 @@ const Modal = ({ pokemon, setIsOpen }) => {
             <div className='modalContent'>
               <h2>Pokédex Info</h2>
               <div className='modalItems'>
-                <h3>Moves</h3>
-                <ul style={{ listStyleType: "none" }}>
-                {
-                  pokemon.abilities.map(ab => {
-                    return <li style={{ paddingUp: 10 }}>{ab.ability.name.charAt(0).toUpperCase() + ab.ability.name.slice(1)}</li>
-                  })
-                }
-                </ul>
-                <h3>Hello</h3>
+                <table>
+                    <tr>
+                      <th>Moves</th>
+                      <th>Attributes</th>
+                    </tr>
+                    <tr>
+                      <td>
+                      <ul style={{ listStyleType: "none" }}>
+                      {
+                        pokemon.abilities.map(ab => {
+                          return <li style={{ paddingUp: 10 }}>{ab.ability.name.charAt(0).toUpperCase() + ab.ability.name.slice(1)}</li>
+                        })
+                      }
+                      </ul>
+                      </td>
+                      <td>
+                        Placeholder
+                      </td>
+                    </tr>
+                    <tr></tr>
+                </table>
               </div>
             </div>
             <div className='modalActions'>
