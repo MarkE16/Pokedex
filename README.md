@@ -6,6 +6,6 @@ This project is a "Pokemon Pokedex" project created with [JavaScript/Node.JS](ht
 It's a project that fetches data from the [PokeAPI](https://pokeapi.co/) and displays it on screen. You currently can render up to 898 (max limit PokeAPI supports) Pokemon with each pokemon being randomly selected.
 
 ## How it looks
-Here is a current preview of the project (There are currently bugs, but it won't look like this in the final version):  
+Here is a current preview of the project (This preview will likely be the final. If not, this is the pre-final, as there might be some later improvements):  
 
-https://user-images.githubusercontent.com/76978800/167986993-c941379b-0285-4d44-a220-0f8ebad9d746.mp4
+https://user-images.githubusercontent.com/76978800/169655851-c495761a-4e79-4f58-afb2-d30e2c626367.mp4
