@@ -4,10 +4,9 @@ import '../App.css';
 
 
 const PokemonItem = ({ pokemon, setModalShown, modalShown, setSelectedPokemonName, selectedPokemonName }) => {
-  
-
   const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   const { sprites } = pokemon;
+
   return (
     <div>
       <div className='pokemon-item' onClick={() => {

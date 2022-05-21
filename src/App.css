@@ -8,19 +8,47 @@ html {
   transition: scroll-behavior 1s ease-in;
 }
 
-tr {
-  border-bottom: 1px solid #ddd;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
+th {
+  text-align: center;
+  padding: 20px;
+}
+
+td {
+  font-size: 20px;
+}
+
+div > ul {
+  height: 150px;
+  overflow-y: scroll;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-top: 10px;
+  margin-right: 40px;
+}
 
 
 /* ClassName CSS */
-.App {
-  text-align: center;
+
+.info-row {
+  height: 100%;
 }
 
-.container {
-
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -67,7 +95,11 @@ tr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+}
+
+.modal-open {
+  overflow: hidden;
+  position: fixed;
 }
 
 .App-header {
@@ -160,15 +192,14 @@ tr {
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
-  
 }
 
 .modal {
   width: 900px;
-  height: 700px;
+  height: 750px;
   background: white;
   color: white;
-  z-index: 1;
+  z-index: 99;
   border-radius: 16px;
   box-shadow: 0 100px 20px 0 rgba(0, 0, 0, 0.04);
   position: fixed;
@@ -206,8 +237,9 @@ tr {
 
 .modalContent {
   color: black;
-  float: left;
-  margin: 20px;
+
+  display: flex;
+  justify-content: center;
   font-size: 15px;
 }
 
@@ -295,4 +327,16 @@ tr {
   box-shadow: none;
   transform: none;
   background: rgb(219, 219, 219);
+  animation-name: okBtnHover;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes okBtnHover {
+ from {
+    padding: 11px 28px;
+  }
+  to {
+    padding: 11px 40px;
+  }
 }

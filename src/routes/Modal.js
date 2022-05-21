@@ -6,7 +6,6 @@ import '../App.css';
 const Modal = ({ pokemon, setIsOpen }) => {
   const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   const { sprites } = pokemon;
-  
   return (
     <div className='darkBG' onClick={() => setIsOpen(false)}>
         <div className='modal' onClick={e => e.stopPropagation()}>
@@ -19,26 +18,58 @@ const Modal = ({ pokemon, setIsOpen }) => {
             <div className='modalImg'>
               <img src={sprites.front_default} />
             </div>
+            <h2 style={{ color: "black" }}>Pokédex Info</h2>
             <div className='modalContent'>
-              <h2>Pokédex Info</h2>
               <div className='modalItems'>
                 <table>
                     <tr>
+                      <th>Abilities</th>
                       <th>Moves</th>
-                      <th>Attributes</th>
+                      <th>Weight</th>
+                      <th>Height</th>
+                      <th>Type(s)</th>
+                      <th>Base Experience</th>
                     </tr>
-                    <tr>
+                    <tr className='info-row'>
                       <td>
-                      <ul style={{ listStyleType: "none" }}>
-                      {
-                        pokemon.abilities.map(ab => {
-                          return <li style={{ paddingUp: 10 }}>{ab.ability.name.charAt(0).toUpperCase() + ab.ability.name.slice(1)}</li>
-                        })
-                      }
-                      </ul>
+                        <div>
+                          <ul>
+                            {
+                              pokemon.abilities.map(ab => {
+                                return <li>{ab.ability.name.charAt(0).toUpperCase() + ab.ability.name.slice(1)}</li>
+                              })
+                            }
+                          </ul>
+                        </div>
                       </td>
                       <td>
-                        Placeholder
+                        <div>
+                          <ul>
+                          {
+                            pokemon.moves.map(move => {
+                              return <li>{move.move.name}</li>
+                            })
+                          }
+                          </ul>
+                        </div>
+                      </td>
+                      <td>
+                        {(pokemon.weight / 10).toString() + " kg"}
+                      </td>
+                      <td>
+                        {pokemon.height}
+                      </td>
+                      <td>
+                        <ul>
+                        {
+                          pokemon.types.map(type => {
+                            return <li>{type.type.name}</li>
+                          })
+                        }
+                        </ul>
+                      </td>
+                      <td>
+                        {pokemon.base_experience}
                       </td>
                     </tr>
                     <tr></tr>
